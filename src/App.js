@@ -9,15 +9,15 @@ function App() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile && selectedFile.type === 'application/zip') {
-      setFile(selectedFile);
-      setError('');
-    } else {
-      setFile(null);
-      setError('Please upload a valid ZIP file.');
-    }
-  };
+  const selectedFile = e.target.files[0];
+  if (selectedFile && selectedFile.name.endsWith('.zip')) {
+    setFile(selectedFile);
+    setError('');
+  } else {
+    setFile(null);
+    setError('Please upload a valid ZIP file.');
+  }
+};
 
   const handleRun = async () => {
     if (!query || !file) {
