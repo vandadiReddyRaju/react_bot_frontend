@@ -7,17 +7,18 @@ function App() {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState('');
   const [isCopied, setIsCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Added isLoading state
 
   const handleFileChange = (e) => {
-  const selectedFile = e.target.files[0];
-  if (selectedFile && selectedFile.name.endsWith('.zip')) {
-    setFile(selectedFile);
-    setError('');
-  } else {
-    setFile(null);
-    setError('Please upload a valid ZIP file.');
-  }
-};
+    const selectedFile = e.target.files[0];
+    if (selectedFile && selectedFile.name.endsWith('.zip')) {
+      setFile(selectedFile);
+      setError('');
+    } else {
+      setFile(null);
+      setError('Please upload a valid ZIP file.');
+    }
+  };
 
   const handleRun = async () => {
     if (!query || !file) {
@@ -28,6 +29,8 @@ function App() {
     const formData = new FormData();
     formData.append('query', query);
     formData.append('file', file);
+
+    setIsLoading(true); // Set loading state to true when the request starts
 
     try {
       const response = await fetch('http://127.0.0.1:5000/api/process', {
@@ -45,6 +48,8 @@ function App() {
     } catch (err) {
       setError('An error occurred while processing your request.');
       setResponse(null);
+    } finally {
+      setIsLoading(false); // Reset loading state when the request is completed
     }
   };
 
@@ -84,8 +89,12 @@ function App() {
             />
             {error && <p className="error">{error}</p>}
           </div>
-          <button type="button" onClick={handleRun} disabled={!query || !file}>
-            Run
+          <button 
+            type="button" 
+            onClick={handleRun} 
+            disabled={isLoading || !query || !file} // Disable button when loading or missing input
+          >
+            {isLoading ? 'Loading...' : 'Run'} {/* Display "Loading..." when loading */}
           </button>
         </form>
       </div>
