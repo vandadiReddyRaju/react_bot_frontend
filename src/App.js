@@ -30,7 +30,7 @@ function App() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('https://your-backend-server.com/api/process', {
+      const response = await fetch('http://127.0.0.1:5000/api/process', {
         method: 'POST',
         body: formData,
       });
