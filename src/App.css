@@ -4,20 +4,22 @@
   gap: 20px;
 }
 
-.input-container{
-  width :35vw;
+.input-container {
+  width: 35vw;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  height:100vh;
+  height: 100vh;
 }
 
 .response-container {
-  width :65vw;
+  width: 65vw;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  height:100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
@@ -29,7 +31,8 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="text"], input[type="file"] {
+input[type="text"],
+input[type="file"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -55,14 +58,19 @@ button:disabled {
 }
 
 .response-content {
+  flex: 1; /* Take up remaining space in .response-container */
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .response-content pre {
+  flex: 1; /* Take up remaining space in .response-content */
   background-color: #f5f5f5;
   padding: 10px;
   border-radius: 5px;
-  overflow-y: auto;
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin: 0; /* Remove default margin */
 }
 
 .response-content button {
