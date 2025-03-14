@@ -64,7 +64,7 @@ function App() {
   };
 
   return (
-    <div className="ide-mentor-bot">
+<div className="ide-mentor-bot">
       <div className="container-1">
         <h1>React Mentor Bot</h1>
         <form onSubmit={(e) => e.preventDefault()}>
@@ -106,7 +106,7 @@ function App() {
       <div className="container-2">
         <h2 className="heading">Response</h2>
         {response && (
-          <button 
+          <button
             onClick={copyToClipboard}
             className="copy-button"
             title="Copy to clipboard"
