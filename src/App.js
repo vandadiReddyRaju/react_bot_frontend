@@ -108,20 +108,20 @@ function App() {
         </form>
       </div>
 
-      <div className="container-2" style={{ position: 'relative' }}>
+      <div className='container-2' style={{ position: 'relative' }}>
         <h1>Response</h1>
-        {response ? (
-          
+        {response && (
+          <div style={{ position: 'relative', border: '1px solid #ccc', borderRadius: '5px', padding: '10px' }}>
             <button
               onClick={handleCopy}
               className="copy-button"
             >
-              {isCopied ? 'Copied!' : 'Copy'}
+              Copy
             </button>
-            <pre>{JSON.stringify(response, null, 2)}</pre>
-         
-        ) : (
-          <p>No response yet. Submit a query and file to see the result.</p>
+            <pre style={{ margin: '0', whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+              {response}
+            </pre>
+          </div>
         )}
       </div>
     </div>
