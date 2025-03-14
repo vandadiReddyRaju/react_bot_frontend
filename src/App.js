@@ -57,15 +57,10 @@ function App() {
         setIsLoading(false); // Reset loading state when the request is completed
     }
 };
-  const handleCopy = () => {
-    if (response) {
-      navigator.clipboard.writeText(JSON.stringify(response, null, 2))
-        .then(() => {
-          setIsCopied(true);
-          setTimeout(() => setIsCopied(false), 2000); // Reset copied state after 2 seconds
-        })
-        .catch(() => setError('Failed to copy response to clipboard.'));
-    }
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(response).catch(() => {
+      setError('Failed to copy text');
+    });
   };
 
   return (
