@@ -106,12 +106,10 @@ function App() {
       <div className="response-container">
         <h2>Response</h2>
         {response ? (
-          <div className="response-content">
             <pre>{JSON.stringify(response, null, 2)}</pre>
             <button type="button" onClick={handleCopy}>
               {isCopied ? 'Copied!' : 'Copy'}
             </button>
-          </div>
         ) : (
           <p>No response yet. Submit a query and file to see the result.</p>
         )}
