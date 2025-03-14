@@ -22,37 +22,41 @@ function App() {
 
   const handleRun = async () => {
     if (!query || !file) {
-      setError('Please provide both a query and a ZIP file.');
-      return;
+        setError('Please provide both a query and a ZIP file.');
+        return;
     }
+
+    setError(''); // Clear error state before making the request
+    setIsLoading(true); // Set loading state to true when the request starts
 
     const formData = new FormData();
     formData.append('query', query);
     formData.append('file', file);
 
-    setIsLoading(true); // Set loading state to true when the request starts
-
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/process', {
-        method: 'POST',
-        body: formData,
-      });
+        const response = await fetch('http://127.0.0.1:5000/api/process', {
+            method: 'POST',
+            body: formData,
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch response from the server.');
-      }
+        if (!response.ok) {
+            throw new Error('Failed to fetch response from the server.');
+        }
 
-      const data = await response.json();
-      setResponse(data);
-      setError('');
+        const data = await response.json();
+        if (data.error) {
+            setError(data.error); // Set error if the backend returns an error
+            setResponse(null);
+        } else {
+            setResponse(data.response); // Set response data
+        }
     } catch (err) {
-      setError('An error occurred while processing your request.');
-      setResponse(null);
+        setError('An error occurred while processing your request.');
+        setResponse(null);
     } finally {
-      setIsLoading(false); // Reset loading state when the request is completed
+        setIsLoading(false); // Reset loading state when the request is completed
     }
-  };
-
+};
   const handleCopy = () => {
     if (response) {
       navigator.clipboard.writeText(JSON.stringify(response, null, 2))
