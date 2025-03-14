@@ -103,7 +103,7 @@ function App() {
         </form>
       </div>
 
-      <div className="container-2r">
+      <div className="container-2">
         <h2 className="heading">Response</h2>
         {response && (
           <button 
