@@ -71,7 +71,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="input-container">
-        <h2>Input</h2>
+        <h2>React Mentor Bot</h2>
         <form>
           <div className="form-group">
             <label htmlFor="query">Student Query:</label>
