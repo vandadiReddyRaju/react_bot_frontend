@@ -3,15 +3,13 @@ display: flex;
 }
 
 .container-1 {
-  width: 30%;
-  max-width: 800px;
+  width: 30vw;
   margin: 0 auto;
   padding: 2rem;
 }
 
 .container-2 {
-  width: 70%;
-  max-width: 800px;
+  width: 70vw;
   margin: 0 auto;
   padding: 2rem;
 }
