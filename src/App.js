@@ -69,47 +69,57 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className="input-container">
-        <h2>React Mentor Bot</h2>
-        <form>
-          <div className="form-group">
-            <label htmlFor="query">Student Query:</label>
-            <input
-              type="text"
+    <div className="ide-mentor-bot">
+      <div className="container-1">
+        <h1>React Mentor Bot</h1>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="input-group">
+            <label htmlFor="query">Your Query:</label>
+            <textarea
               id="query"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Enter your query..."
+              placeholder="E.g., Test cases failed, can you help me with my mistakes?"
+              required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="file">Upload ZIP File:</label>
+
+          <div className="input-group">
+            <label htmlFor="file">Upload Zip File (Max 50MB):</label>
             <input
               type="file"
               id="file"
               accept=".zip"
               onChange={handleFileChange}
+              required
             />
-            {error && <p className="error">{error}</p>}
           </div>
-          <button 
-            type="button" 
-            onClick={handleRun} 
-            disabled={isLoading || !query || !file} // Disable button when loading or missing input
+
+          <button
+            type="submit"
+            onClick={handleRun}
+            disabled={isLoading || !query || !file}
+            className={isLoading ? 'loading' : ''}
           >
-            {isLoading ? 'Loading...' : 'Run'} {/* Display "Loading..." when loading */}
+            {isLoading ? 'Processing...' : 'Run'}
           </button>
+
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
 
-      <div className="response-container">
-        <h2>Response</h2>
+      <div className="container-2" style={{ position: 'relative' }}>
+        <h1>Response</h1>
         {response ? (
-            <pre>{JSON.stringify(response, null, 2)}</pre>
-            <button type="button" onClick={handleCopy}>
+          <div className="response-box">
+            <button
+              onClick={handleCopy}
+              className="copy-button"
+            >
               {isCopied ? 'Copied!' : 'Copy'}
             </button>
+            <pre>{JSON.stringify(response, null, 2)}</pre>
+          </div>
         ) : (
           <p>No response yet. Submit a query and file to see the result.</p>
         )}
