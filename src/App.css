@@ -130,41 +130,37 @@ button:disabled {
   margin-right: 15px; /* Give some space between error and response */
   align-self: flex-start;  /* Align the error to the left */
 }
-
-.response {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: #f8f8f8;
+.response-content {
+  margin-top: 1rem;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  background-color: #f8f9fa;
   border-radius: 4px;
-  width: 100%; /* Ensure it takes the rest of the space */
-  display: flex;
-  flex-direction: column;
+  padding: 1rem;
 }
 
-pre {
+.response-text {
+  margin: 0;
   white-space: pre-wrap;
-  word-wrap: break-word;
-  padding: 1rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow-x: auto;
-  text-align: left;  /* Align text to the left */
-  margin: 0; /* Remove default margin */
+  word-break: break-word;
 }
 
 .copy-button {
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #02a1fd;
+  top: 2.5rem;
+  right: 2rem;
+  background: none;
   border: none;
-  padding: 5px;
-  border-radius: 5px;
-  width: 50px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.copy-button:hover {
+  color: #333;
+}
+
+.placeholder {
+  color: #666;
+  font-style: italic;
 }
