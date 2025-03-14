@@ -111,7 +111,7 @@ function App() {
       <div className="container-2" style={{ position: 'relative' }}>
         <h1>Response</h1>
         {response ? (
-          <div className="response-box">
+          
             <button
               onClick={handleCopy}
               className="copy-button"
@@ -119,7 +119,7 @@ function App() {
               {isCopied ? 'Copied!' : 'Copy'}
             </button>
             <pre>{JSON.stringify(response, null, 2)}</pre>
-          </div>
+         
         ) : (
           <p>No response yet. Submit a query and file to see the result.</p>
         )}
