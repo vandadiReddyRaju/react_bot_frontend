@@ -108,21 +108,26 @@ function App() {
         </form>
       </div>
 
-      <div className='container-2' style={{ position: 'relative' }}>
-        <h1>Response</h1>
+      <div className="container-2r">
+        <h2 className="heading">Response</h2>
         {response && (
-          <div style={{ position: 'relative', border: '1px solid #ccc', borderRadius: '5px', padding: '10px' }}>
-            <button
-              onClick={handleCopy}
-              className="copy-button"
-            >
-              Copy
-            </button>
-            <pre style={{ margin: '0', whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
-              {response}
-            </pre>
-          </div>
+          <button 
+            onClick={copyToClipboard}
+            className="copy-button"
+            title="Copy to clipboard"
+          >
+            copy ⎘
+          </button>
         )}
+        <div className="response-content">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : response ? (
+            <pre className="response-text">{response}</pre>
+          ) : (
+            <p className="placeholder">Submit a query to see the response</p>
+          )}
+        </div>
       </div>
     </div>
   );
