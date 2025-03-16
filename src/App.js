@@ -34,7 +34,7 @@ function App() {
     formData.append('file', file);
 
     try {
-        const response = await fetch('https://rct-backend.onrender.com/api/process', {
+        const response = await fetch('http://127.0.0.1:5000/api/process', {
             method: 'POST',
             body: formData,
         });
